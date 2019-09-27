@@ -1,4 +1,4 @@
-package user;
+package com.bench.tdd.demo.tdddemo.user;
 
 import org.springframework.web.bind.annotation.RestController;
 
