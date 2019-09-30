@@ -1,5 +1,8 @@
 package com.bench.tdd.demo.tdddemo.user;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,13 +10,17 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
+@ApiModel(description = "User class")
 public class SUser {
 
     @Id
     @GeneratedValue
     private int id;
+    @ApiModelProperty("Cannot be an empty string")
     private String username;
 
+
+    // make space for posts
     public SUser(String username) {
         this.username = username;
     }
