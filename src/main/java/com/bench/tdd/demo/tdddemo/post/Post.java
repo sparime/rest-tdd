@@ -1,12 +1,11 @@
 package com.bench.tdd.demo.tdddemo.post;
 
+import com.bench.tdd.demo.tdddemo.user.SUser;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "post")
@@ -18,6 +17,18 @@ public class Post {
     private long postId;
     @ApiModelProperty("Upto 140 characters long")
     private String postContent;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private SUser user;
+
+    public SUser getUser() {
+        return user;
+    }
+
+    public void setUser(SUser user) {
+        this.user = user;
+    }
 
     public Post(String postContent) {
         this.postContent = postContent;
@@ -47,6 +58,6 @@ public class Post {
                 '}';
     }
 
-    public Post() {
+    protected Post() {
     }
 }
